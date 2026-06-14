@@ -1,77 +1,126 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Полезные статьи и книги</title>
-    <style>
-        body { font-family: Arial, sans-serif; background-color: #f9f9f9; color: #333; margin: 0; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; }
-        h1 { text-align: center; color: #111; margin-bottom: 40px; }
-        .back-link { display: inline-block; margin-bottom: 20px; color: #666; text-decoration: none; font-weight: bold; }
-        
-        /* Стили для карточек */
-        .card { background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        .tag-article { background: #e3f2fd; color: #0d47a1; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; text-transform: uppercase; }
-        .tag-book { background: #e8f5e9; color: #1b5e20; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; text-transform: uppercase; }
-        .card h3 { margin: 15px 0 10px 0; font-size: 20px; }
-        .card p { color: #666; line-height: 1.6; margin-bottom: 15px; }
-        .card a { color: #1a73e8; text-decoration: none; font-weight: bold; }
-        .card a:hover { text-decoration: underline; }
-
-        /* Стили для развернутых статей */
-        .full-article { background: white; border: 1px solid #e0e0e0; border-radius: 12px; padding: 40px; margin-top: 60px; margin-bottom: 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); scroll-margin-top: 20px; }
-        .full-article h2 { font-size: 28px; color: #111; margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid #e0e0e0; padding-bottom: 10px; }
-        .full-article p { font-size: 18px; line-height: 1.8; color: #444; margin-bottom: 20px; text-align: justify; }
-        .divider { border: 0; height: 1px; background: #e0e0e0; margin: 60px 0; }
-    </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Полезные статьи — Антицель</title>
+<meta name="description" content="Полезные статьи о кризисе, выборе, внутреннем тупике и движении к себе через метод антицели."/>
+<style>
+:root {
+  --terracotta:#E07A5F;
+  --olive:#8A9A5B;
+  --sand:#F4E1D2;
+  --cream:#FFF5E1;
+  --burgundy:#6A1B1A;
+  --soft-text:#7A4D34;
+}
+* { box-sizing:border-box; }
+html, body {
+  margin:0;
+  padding:0;
+  width:100%;
+  min-height:100%;
+}
+body {
+  font-family: Arial, sans-serif;
+  background: var(--cream);
+  color: var(--burgundy);
+  line-height:1.7;
+}
+.page {
+  width:100%;
+  max-width:900px;
+  margin:0 auto;
+  padding:64px 22px 90px;
+}
+.back {
+  display:inline-block;
+  margin-bottom:34px;
+  color:var(--soft-text);
+  font-weight:700;
+  text-decoration:none;
+}
+h1 {
+  font-size:clamp(34px, 8vw, 56px);
+  line-height:1.12;
+  margin:0 0 16px;
+}
+.lead {
+  font-size:20px;
+  color:var(--soft-text);
+  margin:0 0 40px;
+}
+.articles-list {
+  display:block;
+  width:100%;
+}
+.article-card {
+  display:block;
+  width:100%;
+  margin:0 0 18px;
+  padding:26px;
+  background:var(--sand);
+  border-radius:22px;
+  color:var(--burgundy);
+  text-decoration:none;
+}
+.article-card h2 {
+  margin:0 0 10px;
+  font-size:26px;
+  line-height:1.25;
+}
+.article-card p {
+  margin:0;
+  color:var(--soft-text);
+  font-size:18px;
+}
+@media screen and (max-width:700px) {
+  .page {
+    padding:42px 18px 70px;
+  }
+  .lead {
+    font-size:18px;
+    margin-bottom:28px;
+  }
+  .articles-list {
+    display:block !important;
+    width:100% !important;
+  }
+  .article-card {
+    display:block !important;
+    visibility:visible !important;
+    opacity:1 !important;
+    width:100% !important;
+    margin-bottom:16px !important;
+    padding:22px 20px !important;
+  }
+  .article-card h2 {
+    font-size:22px !important;
+  }
+  .article-card p {
+    font-size:16px !important;
+  }
+}
+</style>
 </head>
 <body>
+<main class="page">
+<a class="back" href="index.html">← Вернуться на главную</a>
 
-<div class="container">
-    <a href="poleznye-stati.html" class="back-link">← Назад к списку статей</a>
-    <h1>Полезные статьи и книги</h1>
+<h1>Полезные статьи</h1>
+<p class="lead">Тексты о кризисе, выборе, внутреннем тупике и движении к себе.</p>
 
-    <div class="card">
-        <span class="tag-article">Статья</span>
-        <h3>Анти-цель: когда больше не хочется жить через «надо»</h3>
-        <p>Базовый текст о методе антицели, поиске внутренней опоры и выходе из-под внешнего давления.</p>
-        <a href="#antitsel">Читать статью на этой странице ↓</a>
-    </div>
+<section class="articles-list" aria-label="Список полезных статей">
+<a class="article-card" href="article.html">
+<h2>Анти-цель: когда больше не хочется жить через «надо»</h2>
+<p>Базовый текст о методе антицели и выходе из внутреннего давления.</p>
+</a>
 
-    <div class="card">
-        <span class="tag-article">Статья</span>
-        <h3>Почему я ничего не делаю?</h3>
-        <p>Разбираемся в причинах прокрастинации и отсутствия мотивации. Как сдвинуться с мертвой точки без насилия над собой.</p>
-        <a href="#pochemu">Читать статью на этой странице ↓</a>
-    </div>
-
-    <div class="card">
-        <span class="tag-book">Книга</span>
-        <h3>Методическое пособие по антицеллюлитному массажу</h3>
-        <p>Ваша книга-руководство. Практические советы и пошаговая методика.</p>
-        <a href="Книга.pdf" target="_blank">Скачать книгу ↓</a>
-    </div>
-
-    <hr class="divider">
-
-    <article class="full-article" id="antitsel">
-        <h2>Анти-цель: когда больше не хочется жить через «надо»</h2>
-        <p>Бывало ли у вас так: цель достигнута, галочка поставлена, но вместо радости — пустота? Или вы годами топчетесь на месте, ругая себя за лень, хотя задача кажется правильной и нужной?</p>
-        <p>Часто причина не в отсутствии силы воли. Просто эта цель — не ваша. Она навязана обществом, родителями, соцсетями или страхом показаться «недостаточно успешным». Метод Антицели — это не отказ от развития. Это способ убрать лишнее давление, отпустить чужие ожидания и нащупать то, что действительно зажигает вас изнутри.</p>
-        <p>Когда мы действуем из концепции «надо», наш ресурс быстро истощается. Но стоит сместить фокус на бережное отношение к себе, как движение к желаемому становится естественным, плавным и наполненным энергией.</p>
-        <a href="poleznye-stati.html" class="back-link">← Вернуться к списку</a>
-    </article>
-
-    <article class="full-article" id="pochemu">
-        <h2>Почему я ничего не делаю?</h2>
-        <p>Прокрастинация — один из самых частых запросов, с которым приходят в коучинг. Мы привыкли винить во всем недостаток дисциплины, но за нежеланием действовать всегда кроется более глубокая причина.</p>
-        <p>Наш мозг блокирует энергию, когда чувствует скрытый страх: страх неудачи («а вдруг не получится?»), страх осуждения или банальную, накопленную усталость, которую мы упорно игнорируем. Организм просто защищает себя от очередного стресса и перегрузки.</p>
-        <p>Чтобы сдвинуться с мертвой точки, бессмысленно заставлять себя силой. Важно сначала снизить критику в свой адрес, выдохнуть и разрешить себе сделать один микроскопический, поддерживающий шаг. Как только спадет внутреннее напряжение, появится и ясность, куда двигаться дальше.</p>
-        <a href="poleznye-stati.html" class="back-link">← Вернуться к списку</a>
-    </article>
-
-</div>
-
+<a class="article-card" href="pochemu-ya-nichego-ne-delayu.html">
+<h2>Почему я ничего не делаю</h2>
+<p>Как выйти из застревания без насилия над собой и выбрать маленький поддерживающий шаг.</p>
+</a>
+</section>
+</main>
 </body>
 </html>
