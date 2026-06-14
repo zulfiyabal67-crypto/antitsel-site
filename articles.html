@@ -7,10 +7,10 @@
     <style>
         body { font-family: Arial, sans-serif; background-color: #f9f9f9; color: #333; margin: 0; padding: 20px; }
         .container { max-width: 800px; margin: 0 auto; }
-        h1 { text-align: center; color: #111; }
-        .back-link { display: inline-block; margin-bottom: 20px; color: #666; text-decoration: none; }
+        h1 { text-align: center; color: #111; margin-bottom: 40px; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #666; text-decoration: none; font-weight: bold; }
         
-        /* Стили для карточек, которые никогда не сломаются */
+        /* Стили для карточек */
         .card { background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
         .tag-article { background: #e3f2fd; color: #0d47a1; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; text-transform: uppercase; }
         .tag-book { background: #e8f5e9; color: #1b5e20; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; text-transform: uppercase; }
@@ -18,24 +18,58 @@
         .card p { color: #666; line-height: 1.6; margin-bottom: 15px; }
         .card a { color: #1a73e8; text-decoration: none; font-weight: bold; }
         .card a:hover { text-decoration: underline; }
+
+        /* Стили для развернутых статей */
+        .full-article { background: white; border: 1px solid #e0e0e0; border-radius: 12px; padding: 40px; margin-top: 60px; margin-bottom: 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); scroll-margin-top: 20px; }
+        .full-article h2 { font-size: 28px; color: #111; margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid #e0e0e0; padding-bottom: 10px; }
+        .full-article p { font-size: 18px; line-height: 1.8; color: #444; margin-bottom: 20px; text-align: justify; }
+        .divider { border: 0; height: 1px; background: #e0e0e0; margin: 60px 0; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <a href="index.html" class="back-link">← На главную</a>
+    <a href="poleznye-stati.html" class="back-link">← Назад к списку статей</a>
     <h1>Полезные статьи и книги</h1>
 
-   <div class="card">
+    <div class="card">
+        <span class="tag-article">Статья</span>
+        <h3>Анти-цель: когда больше не хочется жить через «надо»</h3>
+        <p>Базовый текст о методе антицели, поиске внутренней опоры и выходе из-под внешнего давления.</p>
+        <a href="#antitsel">Читать статью на этой странице ↓</a>
+    </div>
+
+    <div class="card">
         <span class="tag-article">Статья</span>
         <h3>Почему я ничего не делаю?</h3>
-        <p>Разбираемся в причинах прокрастинации и отсутствия мотивации. Как сдвинуться с мертвой точки.</p>
-        <a href="pochemu-ya-nichego-ne-delayu.html">Читать статью →</a>
+        <p>Разбираемся в причинах прокрастинации и отсутствия мотивации. Как сдвинуться с мертвой точки без насилия над собой.</p>
+        <a href="#pochemu">Читать статью на этой странице ↓</a>
     </div>
+
     <div class="card">
         <span class="tag-book">Книга</span>
         <h3>Методическое пособие по антицеллюлитному массажу</h3>
         <p>Ваша книга-руководство. Практические советы и пошаговая методика.</p>
-        <a href="Книга.pdf">Скачать книгу ↓</a>
+        <a href="Книга.pdf" target="_blank">Скачать книгу ↓</a>
     </div>
-    
+
+    <hr class="divider">
+
+    <article class="full-article" id="antitsel">
+        <h2>Анти-цель: когда больше не хочется жить через «надо»</h2>
+        <p>Живя в постоянной гонке за успехом, мы часто забываем задать себе один простой вопрос: «А действительно ли это моя цель?». Метод Антицели помогает подсветить навязанные извне ориентиры и сбросить лишнее грузило ожиданий.</p>
+        <p>Когда вы действуете только из концепции жесткого долга, ресурсы организма быстро истощаются, уступая место выгоранию. Переход к бережному планированию позволяет двигаться вперед плавно, сохраняя контакт со своими настоящими ценностями и внутренним спокойствием.</p>
+        <a href="poleznye-stati.html" class="back-link">← Вернуться к списку</a>
+    </article>
+
+    <article class="full-article" id="pochemu">
+        <h2>Почему я ничего не делаю?</h2>
+        <p>Прокрастинация — это не лень и не отсутствие силы воли. Чаще всего за нежеланием действовать скрывается сильный внутренний страх: страх совершить ошибку, не оправдать чьих-то надежд или столкнуться со слишком большой, неподъемной задачей.</p>
+        <p>Чтобы бережно выйти из этого состояния ступора без насилия над собой, важно перестать себя винить. Попробуйте разбить задачу на микроскопические части и сделать всего один маленький, максимально поддерживающий шаг. Защитите себя от внутреннего критика, и энергия на действия постепенно вернется.</p>
+        <a href="poleznye-stati.html" class="back-link">← Вернуться к списку</a>
+    </article>
+
+</div>
+
+</body>
+</html>
