@@ -1,0 +1,1 @@
+Approved guide images are stored as optimized JPG assets for the 8-page guide.
