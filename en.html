@@ -21,6 +21,16 @@
 .antitest-final-note{max-width:720px;margin:24px auto 0;padding:16px;background:#F4E1D2;border-radius:16px;color:#6A1B1A}
 @media(max-width:760px){.antitest-section{padding:36px 12px}.antitest-result-grid{grid-template-columns:1fr}.antitest-answer{font-size:15px}}
 
+
+/* Footer layout matching the Russian homepage */
+footer{background:linear-gradient(135deg,#6A1B1A,#7A4D34);color:#FFF5E1;max-width:none;text-align:center;padding:44px 22px}
+.footer-grid{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch}
+.footer-card{display:flex;flex-direction:column;justify-content:center;text-align:center;text-decoration:none;color:#FFF5E1;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:24px;transition:.2s}
+.footer-card:hover{transform:translateY(-3px);background:rgba(255,255,255,.14)}
+.footer-card h3{color:#FFF5E1;margin-top:0}
+footer .footer-card p{color:#F4E1D2;margin:0}
+@media(max-width:860px){.footer-grid{grid-template-columns:1fr}}
+
 </style></head>
 <body><header><nav><strong>Zulfiya Islamova (Balgimbayeva)</strong><span><a href="#test">Mini-test</a> <a href="/">RU</a><a class="lang" href="/en.html" aria-current="page">EN</a></span></nav></header><main>
 <section class="hero" id="about"><img class="photo" src="zulfiya-photo.jpg" alt="Zulfiya Islamova (Balgimbayeva), psychologist and coach"><div><span class="eyebrow">Doctor of Psychological Sciences · ICF-trained coach · Creator of the Anti-Goal School</span><h1>Support through life transitions — with more clarity and less pressure</h1><p class="lead">Does your old way of living no longer feel right, while the next step is still unclear?</p><p class="lead">Begin by noticing what you no longer want to continue. This can help you understand what needs attention and choose one realistic next step.</p><a class="btn" href="#method">Explore the method</a><a class="btn secondary" href="#sessions">Session options</a></div></section>
@@ -61,7 +71,25 @@
 
 <section id="sessions"><h2>Session options</h2><div class="cards"><article class="card"><h3>Diagnostic session</h3><p>Clarify the situation and identify a possible next step.</p><div class="price">€50</div></article><article class="card"><h3>Coaching session</h3><p>Explore what feels stuck and find a way forward.</p><div class="price">€100</div></article><article class="card"><h3>Package of 4 sessions</h3><p>Ongoing work towards clarity and sustainable movement.</p><div class="price">€350</div></article></div><p class="lead">To ask a question or arrange a session, contact me on Telegram.</p><a class="btn" href="https://t.me/zulfiyacoach_bot" target="_blank" rel="noopener">Contact / Book a session</a></section>
 <section class="alt"><h2>About the author</h2><p class="lead">Zulfiya Islamova (Balgimbayeva) is a psychologist, coach, researcher and educator. Her work brings together psychological knowledge, reflective practice and an interest in how people navigate periods of change.</p><p class="lead">The Anti-Goal Method begins with a simple question: “What do I no longer want?” It helps structure reflection, clarify what can be changed and identify a realistic next step.</p><a class="btn secondary" href="https://scholar.google.com/citations?user=TDNnW5QAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar profile</a></section>
-</main><footer><h2>Anti-Goal School</h2><p>A space for thoughtful, gentle change and a more conscious relationship with yourself.</p><a class="btn secondary" href="https://t.me/zulfiyacoach_bot" target="_blank" rel="noopener">Get in touch</a><p>Zulfiya Islamova (Balgimbayeva)</p></footer>
+</main><footer>
+  <div class="footer-grid">
+    <a class="footer-card" href="https://t.me/zulfiyacoach_bot" target="_blank" rel="noopener">
+      <h3>Anti-Goal School</h3>
+      <p>A space for those who want to move through life transitions consciously, calmly and with inner support.</p>
+    </a>
+    <a class="footer-card" href="https://www.youtube.com/playlist?list=PLrX63cYmiSzxRkT3oan7-jKVJN3FtOxS4" target="_blank" rel="noopener">
+      <h3>Video Lectures</h3>
+      <p>Short talks to help you see your situation from a different perspective and begin moving forward.</p>
+    </a>
+    <a class="footer-card" href="/poleznye-stati">
+      <h3>Articles</h3>
+      <p>Thoughts on life transitions, choices, feeling stuck and finding your way back to yourself.</p>
+    </a>
+  </div>
+  <div style="text-align:center;margin-top:24px;">
+    <a class="btn secondary" href="https://t.me/zulfiyacoach_bot" target="_blank" rel="noopener">Book a session</a>
+  </div>
+</footer>
 <script>
 const antitestQuestions = [
  {text:"When you think about an important change, you tend to…",answers:[["A","Put off getting started"],["B","Start, but quickly run out of energy"],["C","Try to do everything perfectly and burn out"],["D","Feel unsure what you really want"]]},
