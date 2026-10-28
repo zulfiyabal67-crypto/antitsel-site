@@ -27,7 +27,7 @@
     <header class="site-header">
       <a class="wordmark" href="/index-en.html#method" aria-label="The Antigoal — return to the main website">
         <span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 36 36"><path d="M9 28C8 15 16 8 28 8C28 21 21 29 9 28Z M10 27L23 13"/></svg></span>
-        Антицель<span class="wordmark-dot">.</span>
+        The Antigoal<span class="wordmark-dot">.</span>
       </a>
       <a class="header-caption" href="/index-en.html#method" style="text-decoration:none; min-height:44px;">← Main website</a>
     </header>
@@ -44,7 +44,7 @@
         <div class="method-credit"><span>Creator of the Antigoal method</span><strong>Zulfiya Islamova</strong></div>
       </section>
       <section class="practice-card" id="practice" aria-label="The Antigoal practice tool">
-        <nav class="stepper" aria-label="Шаги практики" id="stepper"></nav>
+        <nav class="stepper" aria-label="Practice steps" id="stepper"></nav>
         <div class="progress-track" aria-hidden="true"><div id="progress-fill"></div></div>
         <form id="practice-form" novalidate>
           <div id="step-content"></div>
@@ -106,7 +106,7 @@ function timingText(key,baseDate=new Date()){
   if(key==='tomorrow')date.setDate(date.getDate()+1);
   if(key==='week')date.setDate(date.getDate()+7);
   const dateText=date.toLocaleDateString('en-GB',{day:'2-digit',month:'2-digit',year:'numeric'});
-  return key==='week'?`В течение недели · до ${dateText}`:`${timingLabels[key]} · ${dateText}`;
+  return key==='week'?`Within a week · by ${dateText}`:`${timingLabels[key]} · ${dateText}`;
 }
 function cardLayout(ctx,state){
   ctx.font='34px Arial, sans-serif';
@@ -134,7 +134,7 @@ function render({focus=false}={}){
   content.innerHTML=state.step===3?resultMarkup():stepMarkup();
   if(focus){const heading=document.getElementById('step-title');heading.focus({preventScroll:true});heading.scrollIntoView({block:'nearest',behavior:'instant'});}
 }
-function textarea(field,label,placeholder,max=700){return `<label class="field-label" for="answer">${label}</label><textarea class="input-area" id="answer" name="${field}" rows="4" maxlength="${max}" placeholder="${placeholder}" aria-describedby="field-hint field-error counter">${esc(state[field])}</textarea><div class="field-meta"><span id="field-hint">${field==='action'?'Одно действие, которое зависит от вас.':'Достаточно одной конкретной ситуации.'}</span><span id="counter" class="counter">${state[field].length} / ${max}</span></div>`;}
+function textarea(field,label,placeholder,max=700){return `<label class="field-label" for="answer">${label}</label><textarea class="input-area" id="answer" name="${field}" rows="4" maxlength="${max}" placeholder="${placeholder}" aria-describedby="field-hint field-error counter">${esc(state[field])}</textarea><div class="field-meta"><span id="field-hint">${field==='action'?'One action that is within your control.':'One specific situation is enough.'}</span><span id="counter" class="counter">${state[field].length} / ${max}</span></div>`;}
 function stepMarkup(){
   let body='';
   const field=fields[state.step];
@@ -143,12 +143,12 @@ function stepMarkup(){
   } else if(state.step===1){
     body=`<p class="step-copy">Find one small part of the situation you can influence. What could you reduce, stop doing or do differently?</p><div class="context-note"><span>Your answer</span>${esc(state.stop)}</div><label class="field-label" id="area-label">Where could a change be possible? <span style="font-weight:400;color:#76816e">Optional</span></label><div class="area-chips" role="group" aria-labelledby="area-label">${Object.entries(areas).map(([key,value])=>`<button type="button" class="chip" data-area="${key}" aria-pressed="${state.area===key}">${value.label}</button>`).join('')}</div>${textarea('change','I can change…','For example: pause before replying so I can check my capacity.')}<details class="examples"><summary>How to make the change more specific</summary><ul><li>Instead of “I wish they valued me more”: “I can say what kind of help I need.”</li><li>Instead of “Stop feeling tired”: “I can reduce one non-essential task.”</li></ul></details>`;
   } else {
-    const ideas=state.area?areas[state.area].ideas:['Взять паузу перед ответом на следующую просьбу.','Выделить 10 минут, чтобы записать одну свою потребность.'];
+    const ideas=state.area?areas[state.area].ideas:['Pause before responding to the next request.','Take 10 minutes to write down one of your needs.'];
     body=`<p class="step-copy">Choose one action that feels manageable with the energy and resources you have now. Keep it small and clear.</p><div class="context-note"><span>You can change</span>${esc(state.change)}</div>${textarea('action','My next step…','For example: tomorrow, say “I’ll get back to you” in response to one request.',350)}<details class="examples"><summary>Need an idea for a small step?</summary><p class="small-label">Use one of these as a starting point and adapt it to your situation.</p><div class="idea-buttons">${ideas.map((idea,index)=>`<button type="button" class="idea-button" data-idea="${index}">${idea}</button>`).join('')}</div></details><fieldset class="timing" id="timing-group" aria-describedby="field-error"><legend>When will I take this step?</legend><div class="timing-options">${Object.entries(timingLabels).map(([key,label])=>`<label class="timing-option"><input type="radio" name="when" value="${key}" ${state.when===key?'checked':''}>${label}</label>`).join('')}</div></fieldset><label class="reality-check"><input id="realistic" type="checkbox" name="realistic" ${state.realistic?'checked':''} aria-describedby="field-error"><span>This step feels manageable with the energy I have now.</span></label>`;
   }
   return `<div class="eyebrow">STEP ${state.step+1} · ${['NOTICE','CLARIFY','TAKE A STEP'][state.step]}</div><h2 class="step-heading" id="step-title" tabindex="-1">${titles[state.step]}</h2>${body}<p id="field-error" class="error-message" role="alert"></p><div class="form-actions ${state.step===0?'first':''}">${state.step>0?'<button type="button" class="button text-button" data-back><span aria-hidden="true">←</span>Back</button>':''}<button type="submit" class="button primary">${state.step===2?'My card':'Continue'}<span class="action-arrow" aria-hidden="true">→</span></button></div>`;
 }
-function resultMarkup(){return `<div class="result-header"><span class="check" aria-hidden="true">✓</span>PRACTICE COMPLETE</div><h2 class="step-heading" id="step-title" tabindex="-1">You have<br>your next step.</h2><p class="step-copy">You do not have to change everything at once. This card can help you return to what matters to you right now.</p><article class="result-sheet" aria-label="Your answers card"><h3 class="sheet-title">My Antigoal</h3><dl><div class="result-row"><dt>I no longer want</dt><dd>${esc(state.stop)}</dd></div><div class="result-row"><dt>I can change</dt><dd>${esc(state.change)}</dd></div><div class="result-row next-step"><dt>My next step</dt><dd>${esc(state.action)}</dd></div></dl><div class="result-time"><span aria-hidden="true">◷</span>${esc(timingText(state.when,baseDate))}</div><p class="result-bottom">I can start small and move at my own pace.</p></article><button type="button" class="button primary download-button" id="download-card"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2v10m-4-4 4 4 4-4M3.5 12.5V17h13v-4.5"/></svg>Download my card</button><p class="download-help" id="download-status" role="status">PNG image · can be saved to your phone</p><div id="export-fallback"></div><div class="result-actions"><button type="button" class="button text-button" data-goto="0">← Изменить ответы</button><button type="button" class="button text-button" id="restart">New practice ↗</button></div>`;}
+function resultMarkup(){return `<div class="result-header"><span class="check" aria-hidden="true">✓</span>PRACTICE COMPLETE</div><h2 class="step-heading" id="step-title" tabindex="-1">You have<br>your next step.</h2><p class="step-copy">You do not have to change everything at once. This card can help you return to what matters to you right now.</p><article class="result-sheet" aria-label="Your answers card"><h3 class="sheet-title">My Antigoal</h3><dl><div class="result-row"><dt>I no longer want</dt><dd>${esc(state.stop)}</dd></div><div class="result-row"><dt>I can change</dt><dd>${esc(state.change)}</dd></div><div class="result-row next-step"><dt>My next step</dt><dd>${esc(state.action)}</dd></div></dl><div class="result-time"><span aria-hidden="true">◷</span>${esc(timingText(state.when,baseDate))}</div><p class="result-bottom">I can start small and move at my own pace.</p></article><button type="button" class="button primary download-button" id="download-card"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2v10m-4-4 4 4 4-4M3.5 12.5V17h13v-4.5"/></svg>Download my card</button><p class="download-help" id="download-status" role="status">PNG image · can be saved to your phone</p><div id="export-fallback"></div><div class="result-actions"><button type="button" class="button text-button" data-goto="0">← Edit answers</button><button type="button" class="button text-button" id="restart">New practice ↗</button></div>`;}
 
 function clearError(){const error=document.getElementById('field-error');if(error)error.textContent='';document.querySelectorAll('[aria-invalid=true]').forEach(el=>el.removeAttribute('aria-invalid'));}
 function showError(error){document.getElementById('field-error').textContent=error.message;const target=error.field==='when'?document.querySelector('input[name=when]'):error.field==='realistic'?document.getElementById('realistic'):document.getElementById('answer');target.setAttribute('aria-invalid','true');target.focus();}
@@ -166,7 +166,7 @@ document.addEventListener('click',event=>{
   if(button.hasAttribute('data-back')){goTo(state.step-1);return;}
   if(button.hasAttribute('data-area')){state.area=state.area===button.dataset.area?'':button.dataset.area;document.querySelectorAll('[data-area]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.area===state.area)));return;}
   if(button.hasAttribute('data-idea')){
-    const ideas=state.area?areas[state.area].ideas:['Взять паузу перед ответом на следующую просьбу.','Выделить 10 минут, чтобы записать одну свою потребность.'];
+    const ideas=state.area?areas[state.area].ideas:['Pause before responding to the next request.','Take 10 minutes to write down one of your needs.'];
     const answer=document.getElementById('answer');answer.value=ideas[Number(button.dataset.idea)];answer.dispatchEvent(new Event('input',{bubbles:true}));answer.focus();return;
   }
   if(button.id==='restart'){dialog.showModal();return;}
@@ -179,7 +179,7 @@ dialog.addEventListener('click',event=>{if(event.target===dialog){const rect=dia
 function roundedRect(ctx,x,y,width,height,radius){ctx.beginPath();ctx.roundRect(x,y,width,height,radius);ctx.fill();}
 async function downloadCard(){
   const button=document.getElementById('download-card');button.disabled=true;
-  const status=document.getElementById('download-status');status.textContent='Готовим вашу карточку…';
+  const status=document.getElementById('download-status');status.textContent='Preparing your card…';
   try{
     await document.fonts.ready;
     const canvas=document.createElement('canvas');const ctx=canvas.getContext('2d');if(!ctx)throw new Error('Canvas unavailable');
