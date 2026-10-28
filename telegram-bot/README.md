@@ -15,7 +15,7 @@ Set these in the Cloudflare dashboard for the separate Worker `antitsel-telegram
 - `WEBHOOK_SECRET` — a random 32+ character secret using only letters, numbers, underscores, and hyphens.
 - `SETUP_KEY` — another random secret used only for one-time setup.
 - `WORKER_URL` — the full HTTPS URL of this Worker, without a trailing slash, e.g. `https://antitsel-telegram-bot.<your-subdomain>.workers.dev`.
-- `ADMIN_CHAT_ID` — Zulfiya's Telegram chat ID to receive incoming messages and booking requests. Set this only after we verify the correct chat ID.
+- `ADMIN_CHAT_ID` — Telegram chat ID of the person who will receive incoming messages and booking requests. Set this only after verifying the correct chat ID.
 
 ## Deploy and register the webhook
 1. Create a new Cloudflare Worker and connect this repository's branch `telegram-bot-setup`, with the root directory set to `telegram-bot`; alternatively deploy this directory using Wrangler.
