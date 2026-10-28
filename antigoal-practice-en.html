@@ -43,6 +43,18 @@ if(state.step===2){document.getElementById("when").value=state.when;document.get
 const back=document.getElementById("back");if(back)back.onclick=()=>{state.step--;render()};
 document.getElementById("next").onclick=()=>{state[p.key]=a.value.trim();const error=document.getElementById("error");if(!state[p.key]){error.textContent="Please write a short answer before continuing.";a.focus();return}if(state.step===2&&state.action.length>350){error.textContent="Please shorten your answer to 350 characters.";return}state.step++;render()};
 }
-function downloadCard(){const text="ANTI-GOAL · ONE STEP TOWARDS YOURSELF\n\nMY ANTI-GOAL\n\nI NO LONGER WANT\n"+state.stop+"\n\nI CAN CHANGE\n"+state.change+"\n\nMY NEXT STEP\n"+state.action+"\n\nWHEN: "+({"today":"Today","tomorrow":"Tomorrow","week":"Within a week"}[state.when])+"\n\nI can start small and move at my own pace.\n\nAnti-Goal Method · Zulfiya Islamova (Balgimbayeva)";const blob=new Blob([text],{type:"text/plain;charset=utf-8"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="my-anti-goal-card.txt";a.click();URL.revokeObjectURL(a.href)}
+function downloadCard(){
+const canvas=document.createElement("canvas");canvas.width=1000;canvas.height=1400;
+const ctx=canvas.getContext("2d");ctx.fillStyle="#f6f5ef";ctx.fillRect(0,0,1000,1400);
+ctx.fillStyle="#293c38";ctx.font="bold 22px Arial";ctx.fillText("ANTI-GOAL · ONE STEP TOWARDS YOURSELF",80,100);
+ctx.fillStyle="#8b9b7b";ctx.fillRect(80,135,840,3);
+ctx.fillStyle="#293c38";ctx.font="48px Georgia";ctx.fillText("My Anti-Goal",80,225);
+let y=300;
+function section(label,value){ctx.fillStyle="#64745a";ctx.font="bold 20px Arial";ctx.fillText(label.toUpperCase(),80,y);y+=38;ctx.fillStyle="#293c38";ctx.font="27px Arial";const words=String(value).split(/\\s+/);let line="";for(const word of words){const test=line?line+" "+word:word;if(ctx.measureText(test).width>820&&line){ctx.fillText(line,80,y);y+=39;line=word}else line=test}if(line){ctx.fillText(line,80,y);y+=39}y+=35}
+section("I no longer want",state.stop);section("I can change",state.change);section("My next step",state.action);section("When",({"today":"Today","tomorrow":"Tomorrow","week":"Within a week"}[state.when]));
+ctx.fillStyle="#60765a";ctx.font="italic 25px Georgia";ctx.fillText("I can start small and move at my own pace.",80,1250);
+ctx.fillStyle="#66716c";ctx.font="17px Arial";ctx.fillText("Anti-Goal Method · Zulfiya Islamova (Balgimbayeva)",80,1320);
+const a=document.createElement("a");a.href=canvas.toDataURL("image/png");a.download="my-anti-goal-card.png";a.click()
+}
 render();
 </script></body></html>
