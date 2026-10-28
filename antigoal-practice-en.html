@@ -45,16 +45,29 @@ document.getElementById("next").onclick=()=>{state[p.key]=a.value.trim();const e
 }
 function downloadCard(){
 const canvas=document.createElement("canvas");canvas.width=1000;canvas.height=1400;
-const ctx=canvas.getContext("2d");ctx.fillStyle="#f6f5ef";ctx.fillRect(0,0,1000,1400);
+const ctx=canvas.getContext("2d");
+ctx.fillStyle="#f6f5ef";ctx.fillRect(0,0,canvas.width,canvas.height);
 ctx.fillStyle="#293c38";ctx.font="bold 22px Arial";ctx.fillText("ANTI-GOAL · ONE STEP TOWARDS YOURSELF",80,100);
 ctx.fillStyle="#8b9b7b";ctx.fillRect(80,135,840,3);
 ctx.fillStyle="#293c38";ctx.font="48px Georgia";ctx.fillText("My Anti-Goal",80,225);
 let y=300;
-function section(label,value){ctx.fillStyle="#64745a";ctx.font="bold 20px Arial";ctx.fillText(label.toUpperCase(),80,y);y+=38;ctx.fillStyle="#293c38";ctx.font="27px Arial";const words=String(value).split(/\\s+/);let line="";for(const word of words){const test=line?line+" "+word:word;if(ctx.measureText(test).width>820&&line){ctx.fillText(line,80,y);y+=39;line=word}else line=test}if(line){ctx.fillText(line,80,y);y+=39}y+=35}
-section("I no longer want",state.stop);section("I can change",state.change);section("My next step",state.action);section("When",({"today":"Today","tomorrow":"Tomorrow","week":"Within a week"}[state.when]));
+function section(label,value){
+ctx.fillStyle="#64745a";ctx.font="bold 20px Arial";ctx.fillText(label.toUpperCase(),80,y);y+=38;
+ctx.fillStyle="#293c38";ctx.font="27px Arial";
+const maxWidth=820,lineHeight=39,words=String(value).split(/\\s+/);let line="";
+for(const word of words){const test=line?line+" "+word:word;if(ctx.measureText(test).width>maxWidth&&line){ctx.fillText(line,80,y);y+=lineHeight;line=word}else line=test}
+if(line){ctx.fillText(line,80,y);y+=lineHeight}y+=35;
+}
+section("I no longer want",state.stop);
+section("I can change",state.change);
+section("My next step",state.action);
+section("When",({"today":"Today","tomorrow":"Tomorrow","week":"Within a week"}[state.when]));
 ctx.fillStyle="#60765a";ctx.font="italic 25px Georgia";ctx.fillText("I can start small and move at my own pace.",80,1250);
 ctx.fillStyle="#66716c";ctx.font="17px Arial";ctx.fillText("Anti-Goal Method · Zulfiya Islamova (Balgimbayeva)",80,1320);
-const a=document.createElement("a");a.href=canvas.toDataURL("image/png");a.download="my-anti-goal-card.png";a.click()
+canvas.toBlob(blob=>{
+if(!blob){alert("The card could not be created. Please try again.");return}
+const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="my-anti-goal-card.png";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+},"image/png");
 }
 render();
 </script></body></html>
