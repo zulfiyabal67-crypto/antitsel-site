@@ -77,9 +77,27 @@ async function handleMessage(message, env) {
     return;
   }
 
+  if (env.ADMIN_CHAT_ID) {
+    const username = message.from?.username ? "@" + message.from.username : "не указан";
+    const name = [message.from?.first_name, message.from?.last_name].filter(Boolean).join(" ") || "не указано";
+    await telegram(env, "sendMessage", {
+      chat_id: env.ADMIN_CHAT_ID,
+      text: "Новая заявка/сообщение из бота «Антицель»\\nИмя в Telegram: " + name +
+        "\\nUsername: " + username +
+        "\\nTelegram ID: " + message.from?.id +
+        "\\n\\nТекст сообщения:\\n" + text
+    });
+    await telegram(env, "sendMessage", {
+      chat_id: chatId,
+      text: "Спасибо! Ваше сообщение передано Зульфие. Она свяжется с вами по указанному контакту, если вы его оставили.",
+      reply_markup: mainKeyboard()
+    });
+    return;
+  }
+
   await telegram(env, "sendMessage", {
     chat_id: chatId,
-    text: "Чтобы отправить заявку, нажмите «Записаться» в меню и заполните короткую форму одним сообщением. Если вы уже отправили заявку, она будет передана после настройки получателя заявок.",
+    text: "Бот пока настраивается: заявки ещё не передаются получателю. Пожалуйста, попробуйте позже.",
     reply_markup: mainKeyboard()
   });
 }
