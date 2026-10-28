@@ -15,6 +15,7 @@ Set these in the Cloudflare dashboard for the separate Worker `antitsel-telegram
 - `WEBHOOK_SECRET` — a random 32+ character secret using only letters, numbers, underscores, and hyphens.
 - `SETUP_KEY` — another random secret used only for one-time setup.
 - `WORKER_URL` — the full HTTPS URL of this Worker, without a trailing slash, e.g. `https://antitsel-telegram-bot.<your-subdomain>.workers.dev`.
+- `ADMIN_CHAT_ID` — Zulfiya's Telegram chat ID to receive incoming messages and booking requests. Set this only after we verify the correct chat ID.
 
 ## Deploy and register the webhook
 1. Create a new Cloudflare Worker and connect this repository's branch `telegram-bot-setup`, with the root directory set to `telegram-bot`; alternatively deploy this directory using Wrangler.
@@ -23,4 +24,4 @@ Set these in the Cloudflare dashboard for the separate Worker `antitsel-telegram
 4. Open the bot in Telegram and send `/start`.
 
 ## Important limitation
-This first scaffold does not yet forward booking requests to Zulfiya or store them. A secure recipient chat ID and a final notification flow must be configured before using it for real bookings. Do not advertise it as a working booking service until that step is completed.
+Messages sent to the bot are forwarded to `ADMIN_CHAT_ID` only after that variable is configured. This version does not store requests or collect structured form fields; users should include their name, requested service, preferred days/time and contact in one message. Test it with your own account before sharing it publicly.
