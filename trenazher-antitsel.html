@@ -41,7 +41,7 @@
           <svg viewBox="0 0 360 240"><ellipse cx="174" cy="187" rx="117" ry="35" fill="#e9ece2"/><path d="M126 214C145 163 187 109 248 54" fill="none" stroke="#829087" stroke-width="1.5"/><path d="M178 141C138 149 110 123 109 87C146 87 173 108 178 141Z" fill="#dbe1d3" stroke="#9ca99a"/><path d="M205 111C198 73 218 42 253 32C260 67 241 99 205 111Z" fill="#e4dace" stroke="#b8ac9b"/><path d="M158 168C165 193 194 201 228 187C212 158 183 152 158 168Z" fill="#d0d9c8" stroke="#9ba793"/><path d="M234 82C259 95 286 89 306 65C280 46 254 53 234 82Z" fill="#e5e5d7" stroke="#adad98"/><path d="M143 188C112 188 91 172 78 145C111 140 138 157 143 188Z" fill="#e5d8cb" stroke="#b8a393"/><path d="M111 89L175 138 M250 35L207 108 M225 187L162 169 M302 65L236 82 M80 147L141 187" fill="none" stroke="#9faaa0" stroke-width=".8"/><circle cx="76" cy="68" r="3" fill="#c7bdb0"/><circle cx="294" cy="146" r="2" fill="#a7b4a4"/></svg>
           <span class="botanical-caption">Небольшие изменения тоже имеют значение.</span>
         </div>
-        <div class="method-credit"><span>Автор метода «Антицель»</span><strong>Зульфия Исламова</strong></div>
+        <div class="method-credit"><span>Автор метода «Антицель»</span><strong>Зульфия Исламова (Балгимбаева)</strong></div>
       </section>
       <section class="practice-card" id="practice" aria-label="Тренажёр метода Антицель">
         <nav class="stepper" aria-label="Шаги практики" id="stepper"></nav>
@@ -199,7 +199,7 @@ async function downloadCard(){
     ctx.fillStyle='#eaf0e2';roundedRect(ctx,100,footerY-8,880,67,15);
     ctx.fillStyle='#405c3b';ctx.font='26px Arial, sans-serif';ctx.fillText(timingText(state.when,baseDate),123,footerY+35);
     ctx.fillStyle='#65775c';ctx.font='italic 33px Georgia, serif';const closing=wrapText(ctx,'Я могу начать с малого и двигаться в своём темпе.',860);closing.forEach((line,index)=>ctx.fillText(line,100,footerY+130+index*45));
-    ctx.fillStyle='#74816b';ctx.font='21px Arial, sans-serif';ctx.fillText('Метод «Антицель» · Зульфия Исламова',100,canvas.height-115);
+    ctx.fillStyle='#74816b';ctx.font='21px Arial, sans-serif';ctx.fillText('Метод «Антицель» · Зульфия Исламова (Балгимбаева)',100,canvas.height-115);
     const blob=await new Promise((resolve,reject)=>canvas.toBlob(value=>value?resolve(value):reject(new Error('PNG unavailable')),'image/png'));
     if(exportUrl)URL.revokeObjectURL(exportUrl);exportUrl=URL.createObjectURL(blob);
     const anchor=document.createElement('a');anchor.href=exportUrl;anchor.download=`antitsel-${baseDate.getFullYear()}-${String(baseDate.getMonth()+1).padStart(2,'0')}-${String(baseDate.getDate()).padStart(2,'0')}.png`;document.body.append(anchor);anchor.click();anchor.remove();
