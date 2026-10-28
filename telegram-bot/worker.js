@@ -62,7 +62,7 @@ async function handleMessage(message, env) {
   if (text === "/start" || text === "/help") {
     await telegram(env, "sendMessage", {
       chat_id: chatId,
-      text: "Здравствуйте! Это бот записи на консультацию к Зульфие Исламовой. Выберите, что вас интересует:",
+      text: "Здравствуйте! Мы поможем вам узнать об услугах и оставить заявку на консультацию. Выберите, что вас интересует:",
       reply_markup: mainKeyboard()
     });
     return;
@@ -71,7 +71,7 @@ async function handleMessage(message, env) {
   if (text === "/cancel") {
     await telegram(env, "sendMessage", {
       chat_id: chatId,
-      text: "Хорошо, начнём заново. Выберите действие:",
+      text: "Хорошо, начнём заново. Чем мы можем помочь?",
       reply_markup: mainKeyboard()
     });
     return;
@@ -82,14 +82,14 @@ async function handleMessage(message, env) {
     const name = [message.from?.first_name, message.from?.last_name].filter(Boolean).join(" ") || "не указано";
     await telegram(env, "sendMessage", {
       chat_id: env.ADMIN_CHAT_ID,
-      text: "Новая заявка/сообщение из бота «Антицель»\\nИмя в Telegram: " + name +
+      text: "Новое обращение из бота «Антицель»\\nИмя в Telegram: " + name +
         "\\nUsername: " + username +
         "\\nTelegram ID: " + message.from?.id +
-        "\\n\\nТекст сообщения:\\n" + text
+        "\\n\\nСообщение клиента:\\n" + text
     });
     await telegram(env, "sendMessage", {
       chat_id: chatId,
-      text: "Спасибо! Ваше сообщение передано Зульфие. Она свяжется с вами по указанному контакту, если вы его оставили.",
+      text: "Спасибо за обращение! Мы получили ваше сообщение и свяжемся с вами, если вы оставили контакт для связи.",
       reply_markup: mainKeyboard()
     });
     return;
@@ -97,7 +97,7 @@ async function handleMessage(message, env) {
 
   await telegram(env, "sendMessage", {
     chat_id: chatId,
-    text: "Бот пока настраивается: заявки ещё не передаются получателю. Пожалуйста, попробуйте позже.",
+    text: "Бот пока настраивается, поэтому мы ещё не можем принять заявку. Пожалуйста, попробуйте немного позже.",
     reply_markup: mainKeyboard()
   });
 }
@@ -110,7 +110,7 @@ async function handleCallback(query, env) {
   if (query.data === "book") {
     await telegram(env, "sendMessage", {
       chat_id: chatId,
-      text: "Для заявки отправьте одним сообщением:\n1. Ваше имя\n2. Какая услуга интересует (диагностическая сессия, коуч-сессия или пакет из 4 встреч)\n3. Удобные дни/время и часовой пояс\n4. Как с вами связаться (например, @username).\n\nНе указывайте конфиденциальные сведения о здоровье или другие лишние личные данные."
+      text: "Чтобы оставить заявку, отправьте одним сообщением:\n1. Как к вам обращаться\n2. Какая услуга интересует: диагностическая сессия, коуч-сессия или пакет из 4 сессий\n3. Удобные дни и время, а также ваш часовой пояс\n4. Как с вами связаться, например ваш @username.\n\nПожалуйста, не указывайте конфиденциальные сведения о здоровье и другие лишние личные данные. Мы ответим вам, чтобы согласовать дальнейшие шаги."
     });
     return;
   }
@@ -118,7 +118,7 @@ async function handleCallback(query, env) {
   if (query.data === "services") {
     await telegram(env, "sendMessage", {
       chat_id: chatId,
-      text: "Стоимость услуг:\n• Диагностическая сессия — 50 €\n• Коуч-сессия — 100 €\n• Пакет из 4 сессий — 350 €\n\nОплата возможна в национальных валютах по актуальному курсу на день оплаты.",
+      text: "Услуги и стоимость:\n• Диагностическая сессия — 50 €\n• Коуч-сессия — 100 €\n• Пакет из 4 сессий — 350 €\n\nСтоимость указана в евро. Оплата возможна в национальных валютах по актуальному курсу на день оплаты.\n\nЧтобы оставить заявку, нажмите «Записаться».",
       reply_markup: mainKeyboard()
     });
     return;
@@ -127,7 +127,7 @@ async function handleCallback(query, env) {
   if (query.data === "contact") {
     await telegram(env, "sendMessage", {
       chat_id: chatId,
-      text: "Напишите здесь ваш вопрос или заявку. Для связи также можно использовать Telegram-канал Школы Антицели: https://t.me/antigoalschool",
+      text: "Напишите здесь ваш вопрос. Мы получим сообщение и ответим вам. Также можно обратиться через Telegram-канал Школы Антицели: https://t.me/antigoalschool",
       reply_markup: mainKeyboard()
     });
   }
